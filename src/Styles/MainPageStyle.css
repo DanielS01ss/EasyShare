@@ -21,6 +21,16 @@
     z-index:10;
 }
 
+.main-page-dashboard-container {
+    background: url(../Media/main-dashboard.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    width: 100%;
+    height: 260vh;
+}
+
 .page-bottom-card-deck
 {
     z-index:100;
