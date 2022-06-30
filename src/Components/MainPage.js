@@ -4,6 +4,7 @@ import ExcelLogo from "../Media/excel-logo.png"
 import WordLogo from "../Media/word-logo.png"
 import PPTLogo from "../Media/ppt-logo.png"
 import LoginCard from "./LoginCard";
+import SignUp from "./SignUp";
 
 const MainPage = ()=>{
 
@@ -69,7 +70,8 @@ const MainPage = ()=>{
         </div>        
         
         </div> */}
-        <LoginCard className="pt-40px"/>
+        {/* <LoginCard className="pt-40px"/> */}
+        {/* <SignUp/> */}
     </div>
     );
 
