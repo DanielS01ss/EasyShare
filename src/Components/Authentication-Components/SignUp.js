@@ -1,5 +1,5 @@
 import React from "react";
-import GoogleLogo from "../Media/google-icon.jpg";
+import GoogleLogo from "../../Media/google-icon.jpg";
 
 const SignUp = ()=>{
 

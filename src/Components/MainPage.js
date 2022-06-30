@@ -3,9 +3,9 @@ import  "../Styles/MainPageStyle.css";
 import ExcelLogo from "../Media/excel-logo.png"
 import WordLogo from "../Media/word-logo.png"
 import PPTLogo from "../Media/ppt-logo.png"
-import LoginCard from "./LoginCard";
-import SignUp from "./SignUp";
-import SuccessRegister from "./SuccessRegister";
+import LoginCard from "./Authentication-Components/LoginCard";
+import SignUp from "./Authentication-Components/SignUp";
+import SuccessRegister from "./Authentication-Components/SuccessRegister";
 
 const MainPage = ()=>{
 

@@ -1,5 +1,5 @@
 import React from "react";
-import CheckGif from "../Media/check.gif";
+import CheckGif from "../../Media/check.gif";
 
 const SuccessRegister = ()=>{
 
