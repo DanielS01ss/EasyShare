@@ -14,7 +14,7 @@ const MainPage = ()=>{
         <div className="mt-40 page-bottom-card-deck pb-20">
             <p className="pt-20 font-bold text-white text-3xl">Files we accept for sharing:</p>
 
-        <div className="flex flex-row flex-wrap">
+        <div className="ml-10 flex flex-row flex-wrap">
         
         <div className="mt-20 ml-10 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
                 <a href="#">
