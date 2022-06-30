@@ -5,6 +5,7 @@ import WordLogo from "../Media/word-logo.png"
 import PPTLogo from "../Media/ppt-logo.png"
 import LoginCard from "./LoginCard";
 import SignUp from "./SignUp";
+import SuccessRegister from "./SuccessRegister";
 
 const MainPage = ()=>{
 
@@ -72,6 +73,7 @@ const MainPage = ()=>{
         </div> */}
         {/* <LoginCard className="pt-40px"/> */}
         {/* <SignUp/> */}
+        <SuccessRegister/>
     </div>
     );
 
