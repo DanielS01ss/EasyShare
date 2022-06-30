@@ -3,12 +3,13 @@ import  "../Styles/MainPageStyle.css";
 import ExcelLogo from "../Media/excel-logo.png"
 import WordLogo from "../Media/word-logo.png"
 import PPTLogo from "../Media/ppt-logo.png"
+import LoginCard from "./LoginCard";
 
 const MainPage = ()=>{
 
     return(
-     <div className="main-page-container overlay">
-        <div className="pt-40 text-white text-5xl">Share files easily using EasyShare!</div>
+     <div className="main-page-container overlay ">
+        {/* <div className="pt-40 text-white text-5xl">Share files easily using EasyShare!</div>
         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold mt-20 py-4 px-10 rounded">Get started!</button>
 
         <div className="mt-40 page-bottom-card-deck pb-20">
@@ -67,7 +68,8 @@ const MainPage = ()=>{
 
         </div>        
         
-        </div>
+        </div> */}
+        <LoginCard className="pt-40px"/>
     </div>
     );
 
