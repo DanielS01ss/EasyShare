@@ -11,7 +11,7 @@ const MainPage = ()=>{
 
     return(
      <div className="main-page-container overlay ">
-        {/* <div className="pt-40 text-white text-5xl">Share files easily using EasyShare!</div>
+         <div className="pt-40 text-white text-5xl">Share files easily using EasyShare!</div>
         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold mt-20 py-4 px-10 rounded">Get started!</button>
 
         <div className="mt-40 page-bottom-card-deck pb-20">
@@ -70,10 +70,10 @@ const MainPage = ()=>{
 
         </div>        
         
-        </div> */}
-        {/* <LoginCard className="pt-40px"/> */}
+        </div> 
+        {/* <LoginCard className="pt-40px"/> /*}
         {/* <SignUp/> */}
-        <SuccessRegister/>
+        {/* <SuccessRegister/> */}
     </div>
     );
 
