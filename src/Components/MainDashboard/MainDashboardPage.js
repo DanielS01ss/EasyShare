@@ -5,18 +5,19 @@ import {  faUser,faDoorOpen } from '@fortawesome/free-solid-svg-icons'
 import MainDashboardPannel from "./MainDashboardPannel";
 import ProfilePage from "../ProfilePage";
 import DocumentList from "./DocumentList";
+import SharedDocumentPage from "../SharedDocumentPage";
 
 const MainDashboardPage = ()=>{
 
     return(
         <div className="main-page-dashboard-container overlay   ">
-            {/* <div className="flex flex-row  pt-10 pb-20 pr-5" style={{"position":"relative","float":"right"}}>
+             {/* <div className="flex flex-row  pt-10 pb-20 pr-5" style={{"position":"relative","float":"left"}}>
                 <p className="text-lg text-white font-bold">My account</p>
                 <FontAwesomeIcon icon={faUser} className="text-white pl-4 text-3xl"/>
-            </div>
-        <MainDashboardPannel/> 
-        <ProfilePage/>
-        */}
+            </div> */}
+        {/* <MainDashboardPannel/>  */}
+        {/* <ProfilePage/> */}
+        
         
         {/* <div id="modalEl" tabindex="-1" aria-hidden="true" style={{backdropFilter: "blur(20px)"}} className="mx-auto w-[100%] h-[100%] overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full  ">
                     <div className="relative p-4 w-full max-w-2xl mx-auto h-full md:h-auto">
@@ -53,7 +54,8 @@ const MainDashboardPage = ()=>{
                     <FontAwesomeIcon icon={faDoorOpen} className="float-right  text-2xl  "/>
                 </button>
    
-        <DocumentList className=""/>
+        {/* <DocumentList className=""/> */}
+        <SharedDocumentPage/>
         
    </div>
     )
