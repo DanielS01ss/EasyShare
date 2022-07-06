@@ -1,7 +1,7 @@
 import React from "react";
 import "../../Styles/MainPageStyle.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {  faUser } from '@fortawesome/free-solid-svg-icons'
+import {  faUser,faDoorOpen } from '@fortawesome/free-solid-svg-icons'
 import MainDashboardPannel from "./MainDashboardPannel";
 import ProfilePage from "../ProfilePage";
 import DocumentList from "./DocumentList";
@@ -48,7 +48,11 @@ const MainDashboardPage = ()=>{
                         </div>
                     </div>
                 </div> */}
-
+                <button className="flex rounded  flex-row float-right mt-5 mr-5 p-5 text-white  hover:bg-violet-700  hover:outline  hover:outline-1">
+                    <span className="pr-4 text-xl">Logout</span>
+                    <FontAwesomeIcon icon={faDoorOpen} className="float-right  text-2xl  "/>
+                </button>
+   
         <DocumentList className=""/>
         
    </div>

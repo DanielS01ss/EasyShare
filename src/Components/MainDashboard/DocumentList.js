@@ -35,7 +35,7 @@ const DocumentList = () =>{
           
         <div className="pt-40 max-w-[1000px] mx-auto  " >
 
-
+            
 
             <div className="flex flex-row justify-center ">
                 <div className="block p-6 rounded-lg shadow-lg  max-w-4xl" style={{backgroundColor:"rgba(255,255,255,0.7"}}>
@@ -45,8 +45,8 @@ const DocumentList = () =>{
                         <h1 className="mt-20 text-2xl px-10 "> Power Point Documents </h1>
                     </div>
                     <div className="px-6 pt-2 pb-2">
-                        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Documents uploaded: 0</span>
-                        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Total Size of Documents: 0MB</span>
+                        <span className="inline-block bg-white rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Documents uploaded: 0</span>
+                        <span className="inline-block bg-white rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Total Size of Documents: 0MB</span>
                     </div>
                     <div className="mb-10">
                         <SearchBar className="mt-10 "/>
@@ -68,9 +68,9 @@ const DocumentList = () =>{
                             <div className="px-6 pt-2 pb-2">
                                 <span className="inline-block bg-sky-600 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2">Size of document: 0 MB</span>
                             </div>
-                            <Button variant="contained" color="error">  <FontAwesomeIcon icon={faTrash} className="pl-2 text-lg"/> </Button>
-                            <Button variant="contained"  style={{backgroundColor: "#a73bdc",marginLeft:"10px"}}>  <FontAwesomeIcon icon={faShareNodes} className="pl-2 text-lg"/> </Button>
-                            <Button variant="contained"  style={{backgroundColor: "#4200b6",marginLeft:"10px"}}>  <FontAwesomeIcon icon={faDownload} className="pl-2 text-lg"/> </Button>
+                            <Button variant="contained" color="error">  <FontAwesomeIcon icon={faTrash} className=" text-lg"/> </Button>
+                            <Button variant="contained"  style={{backgroundColor: "#a73bdc",marginLeft:"10px"}}>  <FontAwesomeIcon icon={faShareNodes} className="text-lg"/> </Button>
+                            <Button variant="contained"  style={{backgroundColor: "#4200b6",marginLeft:"10px"}}>  <FontAwesomeIcon icon={faDownload} className="text-lg"/> </Button>
                             
                         </div>
                         
@@ -82,9 +82,9 @@ const DocumentList = () =>{
                             <div className="px-6 pt-2 pb-2">
                                 <span className="inline-block bg-sky-600 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2">Size of document: 0 MB</span>
                             </div>
-                            <Button variant="contained" color="error">  <FontAwesomeIcon icon={faTrash} className="pl-2 text-lg"/> </Button>
-                            <Button variant="contained"  style={{backgroundColor: "#a73bdc",marginLeft:"10px"}}>  <FontAwesomeIcon icon={faShareNodes} className="pl-2 text-lg"/> </Button>
-                            <Button variant="contained"  style={{backgroundColor: "#4200b6",marginLeft:"10px"}}>   <FontAwesomeIcon icon={faDownload} className="pl-2 text-lg"/> </Button>
+                            <Button variant="contained" color="error">  <FontAwesomeIcon icon={faTrash} className="text-lg"/> </Button>
+                            <Button variant="contained"  style={{backgroundColor: "#a73bdc",marginLeft:"10px"}}>  <FontAwesomeIcon icon={faShareNodes} className="text-lg"/> </Button>
+                            <Button variant="contained"  style={{backgroundColor: "#4200b6",marginLeft:"10px"}}>   <FontAwesomeIcon icon={faDownload} className="text-lg"/> </Button>
                             
                         </div>
 
@@ -96,9 +96,9 @@ const DocumentList = () =>{
                             <div className="px-6 pt-2 pb-2">
                                 <span className="inline-block bg-sky-600 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2">Size of document: 0 MB</span>
                             </div>
-                            <Button variant="contained" color="error">  <FontAwesomeIcon icon={faTrash} className="pl-2 text-lg"/> </Button>
-                            <Button variant="contained"  style={{backgroundColor: "#a73bdc",marginLeft:"10px"}}> <FontAwesomeIcon icon={faShareNodes} className="pl-2 text-lg"/> </Button>
-                            <Button variant="contained"  style={{backgroundColor: "#4200b6",marginLeft:"10px"}}>  <FontAwesomeIcon icon={faDownload} className="pl-2 text-lg"/> </Button>
+                            <Button variant="contained" color="error">  <FontAwesomeIcon icon={faTrash} className="text-lg"/> </Button>
+                            <Button variant="contained"  style={{backgroundColor: "#a73bdc",marginLeft:"10px"}}> <FontAwesomeIcon icon={faShareNodes} className="text-lg"/> </Button>
+                            <Button variant="contained"  style={{backgroundColor: "#4200b6",marginLeft:"10px"}}>  <FontAwesomeIcon icon={faDownload} className="text-lg"/> </Button>
                             
                         </div>
                       
