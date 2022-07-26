@@ -1,19 +1,22 @@
+import React from "react";
 import { useEffect, useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import jwt_decode from "jwt-decode";
 import MainPage from "./Components/MainPage.js";
-
+import {User} from "./Components/ClassModels";
 
 
 function App() {
 
+  const GlobalContext = React.createContext();
 
+  let loggedUser;
   const [user, setUser] = useState({});
 
   const handleSignOut =()=>{
     setUser({});
-    document.getElementById("signInDiv").hidden = false;
+    document.getElementById("signInWithGoogle").hidden = false;
   }
 
   ///aici vei face handlingul la logarea cu google 
@@ -21,17 +24,25 @@ function App() {
   // o sa decodezi jwt-ul pe care-l primesti si o sa iei parametrul sub
   const handleCallbackResponse = (response)=>
   {
-  
-    console.log("Encoded JWT ID token: "+response.credential);
+
     var userObject = jwt_decode(response.credential);
     console.log(userObject);
     setUser(userObject);
-    document.getElementById("signInDiv").hidden = true;
+    loggedUser = new User(userObject.familyName+" "+userObject.given_name,userObject.sub,userObject.email);
+    document.getElementById("signInWithGoogle").hidden = true;
+  }
+
+
+  const contextValues = {
+    user:loggedUser,
+    userData:user,
+    jwt:'',
+    refreshJwt:''
   }
   
 
   useEffect(()=>{
-    /* global google*/
+    /* global google */
     google.accounts.id.initialize({
       client_id:"231967582415-gd49ib3e0agjqa7knoo4o5d876bu779e.apps.googleusercontent.com",
       callback:handleCallbackResponse
@@ -49,8 +60,9 @@ function App() {
 
   return ( 
     <div className="App">
-        <MainPage/>
-
+      <GlobalContext.Provider value={contextValues}>
+          <MainPage/>
+      </GlobalContext.Provider>
     </div>
   );
 }
