@@ -1,27 +1,14 @@
-import  "../Styles/MainPageStyle.css";
-
-import {Route, Routes} from "react-router-dom";
-
-import EmailSentConfirmation from "./Authentication-Components/EmailSentConfirmation";
-import ForgotPasswordCard from "./Authentication-Components/ForgotPasswordCard";
-import GreetingPage from "./GreetingPage";
-import LoginCard from "./Authentication-Components/LoginCard";
 import React from "react";
-import SignUp from "./Authentication-Components/SignUp";
-import SuccessRegister from "./Authentication-Components/SuccessRegister";
+import ExcelLogo from "../Media/excel-logo.png"
+import WordLogo from "../Media/word-logo.png"
+import PPTLogo from "../Media/ppt-logo.png"
 
-const MainPage = ()=>{
+
+const GreetingPage = ()=>{
 
     return(
-     <div className="main-page-container overlay ">
-        <Routes>
-                <Route exact path='/' element={<GreetingPage/>}/>
-                <Route exact path='/login' element={<LoginCard/>}/>
-                <Route exact path='/signup' element={<SignUp/>} />
-                <Route exact path="/forgot-password" element={<ForgotPasswordCard/>}/>
-                <Route exact path='/confirmed-sent-email' element={<EmailSentConfirmation/>}/>
-        </Routes>
-         {/* <div className="pt-40 text-white text-5xl">Share files easily using EasyShare!</div>
+     <>
+         <div className="pt-40 text-white text-5xl">Share files easily using EasyShare!</div>
         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold mt-20 py-4 px-10 rounded">Get started!</button>
 
         <div className="mt-40 page-bottom-card-deck pb-20">
@@ -76,17 +63,12 @@ const MainPage = ()=>{
                     </a>
                 </div>
             </div> 
-
-
         </div>        
-        
-        </div>  */}
-        {/* <LoginCard className="pt-40px"/>  */}
-        {/* <SignUp/> */}
-        {/* <SuccessRegister/> */}
-    </div>
+     </div>
+  </>
+       
     );
 
 };
 
-export default  MainPage;
+export default GreetingPage;

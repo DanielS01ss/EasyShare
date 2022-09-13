@@ -5,7 +5,10 @@ import './App.css';
 import jwt_decode from "jwt-decode";
 import MainPage from "./Components/MainPage.js";
 import {User} from "./Components/ClassModels";
-
+import {BrowserRouter, Routes,Route} from "react-router-dom";
+import GreetingPage from "./Components/GreetingPage";
+import { Switch } from "@mui/material";
+import LoginCard from "./Components/Authentication-Components/LoginCard";
 
 function App() {
 
@@ -61,7 +64,9 @@ function App() {
   return ( 
     <div className="App">
       <GlobalContext.Provider value={contextValues}>
-          <MainPage/>
+        <BrowserRouter> 
+              <MainPage/>
+        </BrowserRouter>
       </GlobalContext.Provider>
     </div>
   );
