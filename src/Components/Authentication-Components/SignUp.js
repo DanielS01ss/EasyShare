@@ -76,7 +76,7 @@ const SignUp = ()=>{
                     <div>
                         <label for="password" className="text-sm font-medium text-gray-900 block mb-2 dark:text-gray-300">Your password</label>
                         <input type="password" onChange={(e)=>{handleChangePassword(e.target.value)}} name="password" id="password" placeholder="••••••••" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required=""/>
-                        {!firstEnteredPassword && !isPasswordStrong && <p className="text-red-600 text-sm">Password should length should be at least 8 and also should contain special characters eg:*!@$# and numbers</p>}
+                        {!firstEnteredPassword && !isPasswordStrong && <p className="text-red-600 text-sm">Password should length should be at least 8 ,should contain at least one capital letter and one small letter  and also should contain special characters eg:*!@$# and numbers</p>}
                     </div>
                     <div>
                         <label for="password" className="text-sm font-medium text-gray-900 block mb-2 dark:text-gray-300">Repeat password</label>
@@ -99,7 +99,7 @@ const SignUp = ()=>{
     
     </div>
     );
-
+ 
 };
 
 export default SignUp;
