@@ -1,16 +1,15 @@
-import React from "react";
-import ProfilePicStockImg from "../Media/user.png";
-import { TextField } from '@mui/material';
 import { Button } from '@mui/material';
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
+import ProfilePicStockImg from "../Media/user.png";
+import React from "react";
+import { TextField } from '@mui/material';
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 const ProfilePage = ()=>{
 
     return(
        
-     <div className="pt-40 max-w-[1000px] mx-auto">
+     <div className="pt-40 max-w-[1000px] mx-auto pb-20">
         <div class="flex justify-center ">
             <div>
             

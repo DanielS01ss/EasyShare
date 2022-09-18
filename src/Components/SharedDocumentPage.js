@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { faDownload, faShareNodes, faTrash } from "@fortawesome/free-solid-svg-icons";
+
 import { Button } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrash, faShareNodes,faDownload} from "@fortawesome/free-solid-svg-icons";
 import PPTLogo from "../Media/ppt-logo.png";
 
 const SharedDocumentPage = ()=>{

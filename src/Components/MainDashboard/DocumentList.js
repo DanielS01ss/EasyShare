@@ -1,13 +1,18 @@
-import React from "react";
-import PPTLogo from "../../Media/ppt-logo.png";
-import { useState } from "react";
+import { faArrowLeft, faDownload, faShareNodes, faTrash, faUpload, faX } from "@fortawesome/free-solid-svg-icons";
+import { useEffect, useState } from "react";
+import {useNavigate, useSearchParams} from "react-router-dom";
+
+import { Button } from '@mui/material';
+import ExcelLogo from "../../Media/excel-logo.png";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import IconButton from "@mui/material/IconButton";
+import {Link} from "react-router-dom"
+import Loading from "../Loading";
+import PPTLogo from "../../Media/ppt-logo.png";
+import React from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import TextField from "@mui/material/TextField";
-import { Button } from '@mui/material';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faX, faUpload,faTrash, faShareNodes,faDownload, faArrowLeft} from "@fortawesome/free-solid-svg-icons";
-
+import WordLogo from "../../Media/word-logo.png";
 
 const SearchBar = ({setSearchQuery}) => (
 
@@ -29,29 +34,68 @@ const SearchBar = ({setSearchQuery}) => (
     </form>
   );
 
+ 
+
 const DocumentList = () =>{
+
+    const navigate = useNavigate();
+    const [searchParams , setSearchParams] = useSearchParams();
+    const [documentsType,setDocumentsType] = useState();
+    useEffect(()=>{
+        const currentParams = Object.fromEntries([...searchParams]);
+        console.log("useEffect:",currentParams);
+        if(!currentParams.type)
+        {
+            navigate('/not-found');
+        }
+        if(currentParams.type === "powerpoint")
+        {
+            setDocumentsType("powerpoint");
+        } else if (currentParams.type === "word")
+        {
+            setDocumentsType("word");
+        } else if (currentParams.type === "excel")
+        {
+            setDocumentsType("excel");
+        } else {
+            navigate('/not-found');
+        }
+    },[])
+
+    const documentListHeader = ()=>{
+        switch(documentsType)
+        {
+            case 'powerpoint':
+                return (<div className="flex flex-row p-20">
+                <img src={PPTLogo} className="w-[175px] "/>
+                    <h1 className="mt-20 text-2xl px-10 "> Power Point Documents </h1>
+                </div>);
+              
+            case 'word':
+                return (<div className="flex flex-row p-20">
+                <img src={WordLogo} className="w-[175px]"/>
+                    <h1 className="mt-20 text-2xl px-10 "> Word Documents </h1>
+              </div>);
+            case 'excel':
+                return (<div className="flex flex-row p-20">
+                <img src={ExcelLogo} className="w-[175px]"/>
+                    <h1 className="mt-20 text-2xl px-10 "> Excel Documents </h1>
+              </div>);
+        }
+        
+      }
 
     return(
           
-        <div className="pt-40 max-w-[1000px] mx-auto  " >
-
-            
-
+        <div className="pt-40 pb-20 max-w-[1000px] mx-auto  " >
             <div className="flex flex-row justify-center ">
-                <div className="block p-6 rounded-lg shadow-lg  max-w-4xl" style={{backgroundColor:"rgba(255,255,255,0.7"}}>
-                <FontAwesomeIcon icon={faArrowLeft} className=" float-left pl-4 pb-5 text-3xl"/> <p>Back to main page</p>
-                    <div className="flex flex-row">
-                        <img src={PPTLogo} className="w-[175px]"/>
-                        <h1 className="mt-20 text-2xl px-10 "> Power Point Documents </h1>
-                    </div>
-                    <div className="px-6 pt-2 pb-2">
-                        <span className="inline-block bg-white rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Documents uploaded: 0</span>
-                        <span className="inline-block bg-white rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Total Size of Documents: 0MB</span>
-                    </div>
+                <div className="block p-6 rounded-lg shadow-lg  max-w-4xl" style={{backgroundColor:"rgba(255,255,255,1.0"}}>
+                <Link to="/app/main-page"><FontAwesomeIcon icon={faArrowLeft} className=" float-left pl-4 pb-5 text-3xl"/> </Link>
+                   
+                   {documentListHeader()}
                     <div className="mb-10">
                         <SearchBar className="mt-10 "/>
                     </div>
-                
                 <div>
                             <Button variant="contained" color="error"> Delete All <FontAwesomeIcon icon={faX} className="pl-2 text-lg"/> </Button>
                             <Button variant="contained"  style={{backgroundColor: "#A10035",marginLeft:"10px"}}> Upload  <FontAwesomeIcon icon={faUpload} className="pl-2 text-lg"/> </Button>

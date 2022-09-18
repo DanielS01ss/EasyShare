@@ -1,8 +1,12 @@
 import React, {useState} from "react";
+
 import GoogleLogo from "../../Media/google-icon.jpg";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const LoginCard = ()=>{
 
+	const navigate = useNavigate();
 	const [validEmail,setValidEmail] = useState(true);
 	const [submitIsActive,setSubmitIsActive] = useState(false);
 	const [passwordEmpty, setPasswordEmpty] = useState(true);
@@ -70,14 +74,14 @@ const LoginCard = ()=>{
 								Password?</a>
 						</div>
 						<div>
-							{ formData.emailValid && formData.passwordNotEmpty ? <button type="submit" className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" >Login to your account</button> :
-							<button type="submit" className="w-full text-white bg-blue-400  font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" disabled >Login to your account</button>
+							{ formData.emailValid && formData.passwordNotEmpty ? <button onClick={()=>{navigate('/app/main-page')}}  className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" >Login to your account</button> :
+							<button  className="w-full text-white bg-blue-400  font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" disabled >Login to your account</button>
 							}
 						</div>
 						<div id="signInWithGoogle"></div>
 						<div class="text-sm font-medium text-gray-500 dark:text-gray-300">
-							Not registered? <a href="#" class="text-blue-700 hover:underline dark:text-blue-500">Create
-								account</a>
+							Not registered? <Link to='/signup' className="text-blue-700 hover:underline dark:text-blue-500">Create
+								account</Link>
 						</div>
 		</form>
 	</div>
