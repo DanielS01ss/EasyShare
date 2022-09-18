@@ -11,6 +11,7 @@ import LoginCard from "./Components/Authentication-Components/LoginCard";
 import MainDashboardPage from './Components/MainDashboard/MainDashboardPage';
 import MainDashboardPannel from "./Components/MainDashboard/MainDashboardPannel";
 import MainPage from "./Components/MainPage.js";
+import { NotFound } from './Components/NotFound/NotFound';
 import { PrivateRoutes } from './Components/PrivateRoutes/PrivateRoutes';
 import ProfilePage from "./Components/ProfilePage";
 import React from "react";
@@ -92,6 +93,7 @@ function App() {
                       <Route path='/app/shared' element={<SharedDocumentPage/>} />
                   </Route>
                 </Route>
+               <Route path="*" element={<NotFound/>}/> 
               </Routes>
         </BrowserRouter>
       </GlobalContext.Provider>
