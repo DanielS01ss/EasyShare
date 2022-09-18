@@ -1,5 +1,8 @@
+import 'react-toastify/dist/ReactToastify.css';
+
 import {Link, useNavigate} from "react-router-dom"
 import React, {useEffect, useState} from "react";
+import { ToastContainer, toast } from 'react-toastify';
 
 import { Button } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -12,6 +15,12 @@ import { isValidEmail } from "../utils/isValidEmail"
 const ProfilePage = ()=>{
 
     const navigate = useNavigate();
+    const notify = () => {
+        toast.error("Something went wrong ! Please try again later!", {
+            position: toast.POSITION.TOP_RIGHT
+          });
+    
+    }
 
     const [emailValue,setEmailValue] = useState("");
     const [isValidEmailInput,setIsValidEmailInput] = useState(false);
@@ -53,6 +62,7 @@ const ProfilePage = ()=>{
 
     return(
      <div className="pt-40 max-w-[600px] mx-auto pb-20">
+        <ToastContainer/>
         <div class="flex justify-center ">
             <div>
             
@@ -87,7 +97,7 @@ const ProfilePage = ()=>{
             </div>
            {!isFirstUsernameInput && username.length === 0 && <p className="text-red-600 text-center">Username can not be empty!</p> }
             <div className="pt-3">
-                <Button disabled={ username.length === 0} variant="contained" className="pt-5  w-[100%]">Submit</Button>
+                <Button disabled={ username.length === 0} onClick={()=>{notify();}} variant="contained" className="pt-5  w-[100%]">Submit</Button>
             </div>
         
         </div>
@@ -105,7 +115,7 @@ const ProfilePage = ()=>{
             onChange={(ev)=>{handleChangeEmail(ev.target.value)}}
             />
            {!isFirstEmailInput && !isValidEmailInput  && <p className="text-red-600 pb-5 text-center">Email is not valid!</p> }
-            <Button variant="contained" disabled={!isValidEmailInput} className="pt-5  w-[100%]">Submit</Button>
+            <Button variant="contained" disabled={!isValidEmailInput}  onClick={()=>{notify();}}  className="pt-5  w-[100%]">Submit</Button>
 
         </div>
         
@@ -133,12 +143,12 @@ const ProfilePage = ()=>{
                     /> 
                 </div>
         {!isFirstConfirmPasswordInput && !passwordsMatch && <p className="text-red-600 text-sm">Passwords don't match</p> }
-            <Button variant="contained" disabled={!passwordsMatch || password.length ===0 } className="pt-20">Submit</Button>
+            <Button variant="contained" disabled={!passwordsMatch || password.length ===0 }  onClick={()=>{notify();}}  className="pt-20">Submit</Button>
 
         </div>
 
          <div className="mt-20">
-         <Button variant="contained" color="error"> Delete account</Button>
+         <Button variant="contained" color="error"  onClick={()=>{notify();}} > Delete account</Button>
          </div>
     
 

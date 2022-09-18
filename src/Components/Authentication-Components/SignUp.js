@@ -1,11 +1,23 @@
+import 'react-toastify/dist/ReactToastify.css';
+
 import {Link, useNavigate} from "react-router-dom"
 import React,{useEffect, useState} from "react";
+import { ToastContainer, toast } from 'react-toastify';
 
-import GoogleLogo from "../../Media/google-icon.jpg";
 import {isPasswordStrongCheck} from "../../utils/isPasswordStrongCheck";
 import { isValidEmail } from "../../utils/isValidEmail";
 
 const SignUp = ()=>{
+
+    useEffect(()=>{
+        
+    },[])
+    const notify = () => {
+        toast.error("Something went wrong while signing up! Please try again later!", {
+            position: toast.POSITION.TOP_RIGHT
+          });
+    
+    }
 
     const [username,setUsername] = useState("");
     const [firstEnteredUsername , setFirstEnteredUsername] = useState(true);
@@ -19,7 +31,6 @@ const SignUp = ()=>{
     const [firstEnteredConfirmPassword,setFirstEnteredConfirmPassword] = useState(true);
     const [arePasswordMatching,setArePasswordsMatching] = useState(false);
     const [isFirstInput,setIsFirstInput] = useState(true);
-    const navigate = useNavigate();
     const isFormOk = !isFirstInput && username.length !== 0 && emailValid && password.length!==0 && confirmPassword.length!==0 && arePasswordMatching && isPasswordStrong;
 
         const checkMatchingPassword =  () =>{
@@ -59,6 +70,7 @@ const SignUp = ()=>{
 
     return(
         <div className="pt-96 pb-96 flex justify-center items-center h-screen ">
+            <ToastContainer/>
         <div
             className="w-96 bg-white shadow-md border border-gray-200 rounded-lg max-w-xl p-8 sm:p-6 lg:p-10 dark:bg-gray-800 dark:border-gray-700">
             <form className="space-y-6" action="#">
@@ -88,7 +100,7 @@ const SignUp = ()=>{
                             <div className="flex items-start">
                                 </div>
                             </div>
-                            { isFormOk ? <button type="submit" onClick={()=>{navigate('/success-register')}} className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Sign Up </button>:
+                            { isFormOk ? <button type="submit" onClick={(e)=>{e.preventDefault(); notify()}} className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Sign Up </button>:
                             <button type="submit" className="w-full text-white bg-blue-400  focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" disabled={true}>Sign Up </button> }
                     <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
                         Already have an account? <Link to="/login" className="text-blue-700 hover:underline dark:text-blue-500">Login</Link>

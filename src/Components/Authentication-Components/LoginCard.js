@@ -1,4 +1,7 @@
+import 'react-toastify/dist/ReactToastify.css';
+
 import React, {useState} from "react";
+import { ToastContainer, toast } from 'react-toastify';
 
 import GoogleLogo from "../../Media/google-icon.jpg";
 import { Link } from "react-router-dom";
@@ -7,6 +10,12 @@ import { useNavigate } from "react-router-dom";
 
 const LoginCard = ()=>{
 
+	const notify = () => {
+        toast.error("Something went wrong ! Please try again later!", {
+            position: toast.POSITION.TOP_RIGHT
+          });
+    
+    }
 	const navigate = useNavigate();
 	const [validEmail,setValidEmail] = useState(true);
 	const [submitIsActive,setSubmitIsActive] = useState(false);
@@ -45,6 +54,7 @@ const LoginCard = ()=>{
     return(
     
 	<div class="pt-40 pb-20 flex justify-center items-center h-screen ">
+		<ToastContainer/>
 	  <div
 		class="w-96 bg-white shadow-md border border-gray-200 rounded-lg max-w-xl p-8 sm:p-6 lg:p-10 dark:bg-gray-800 dark:border-gray-700">
 		<form class="space-y-6" action="#">
@@ -67,11 +77,11 @@ const LoginCard = ()=>{
 									<label for="remember" class="font-medium text-gray-900 dark:text-gray-300">Remember me</label>
 								</div>
 							</div>
-							<a href="#" class="text-sm text-blue-700 hover:underline ml-auto dark:text-blue-500">Lost
-								Password?</a>
+							<Link to='/forgot-password' class="text-sm text-blue-700 hover:underline ml-auto dark:text-blue-500">Lost
+								Password?</Link>
 						</div>
 						<div>
-							{ formData.emailValid && formData.passwordNotEmpty ? <button onClick={()=>{navigate('/app/main-page')}}  className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" >Login to your account</button> :
+							{ formData.emailValid && formData.passwordNotEmpty ? <button onClick={(e)=>{e.preventDefault(); notify();}}  className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" >Login to your account</button> :
 							<button  className="w-full text-white bg-blue-400  font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" disabled >Login to your account</button>
 							}
 						</div>

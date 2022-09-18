@@ -75,7 +75,7 @@ function App() {
   return ( 
     <div className="App">
       <GlobalContext.Provider value={contextValues}>
-        <BrowserRouter> 
+        <BrowserRouter>  
               <Routes>
                 <Route element={<MainPage/>}>
                   <Route path='/' element={<GreetingPage/>} />
