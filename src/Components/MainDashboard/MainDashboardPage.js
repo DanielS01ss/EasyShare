@@ -16,10 +16,10 @@ const MainDashboardPage = ()=>{
 
     return(
         <div className="main-page-dashboard-container overlay   ">
-             <div className="flex flex-row  pt-10 pb-20 pl-5 pr-5" style={{"position":"relative","float":"left"}}>
+             <button className="flex flex-row  mt-5 ml-5 p-5 rounded text-white  hover:bg-amber-500  hover:outline  hover:outline-1"  onClick={()=>{navigate('/app/profile-page')}} style={{"position":"relative","float":"left"}}>
                 <p className="text-lg text-white font-bold">My account</p>
                 <FontAwesomeIcon icon={faUser} className="text-white pl-3 text-3xl"/>
-            </div>
+            </button>
                 <button className="flex rounded flex-row float-right mt-5 mr-5 p-5 text-white  hover:bg-violet-700  hover:outline  hover:outline-1" onClick={()=>{navigate('/')}}>
                     <span className="pr-4 text-xl">Logout</span>
                     <FontAwesomeIcon icon={faDoorOpen} className="float-right  text-2xl  "/>

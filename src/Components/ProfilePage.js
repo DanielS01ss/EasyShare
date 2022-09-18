@@ -1,3 +1,5 @@
+import {Link, useNavigate} from "react-router-dom"
+
 import { Button } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import ProfilePicStockImg from "../Media/user.png";
@@ -7,6 +9,7 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 const ProfilePage = ()=>{
 
+    const navigate = useNavigate();
     return(
        
      <div className="pt-40 max-w-[1000px] mx-auto pb-20">
@@ -16,7 +19,7 @@ const ProfilePage = ()=>{
             </div>
             <div class="block p-6 rounded-lg shadow-lg bg-white max-w-4xl">
             <div className="flex flex-row">
-                <FontAwesomeIcon icon={faArrowLeft} className=" pl-4 text-3xl"/>
+                <FontAwesomeIcon icon={faArrowLeft} className=" pl-4 text-3xl hover:cursor-pointer" onClick={()=>{navigate(-1)}} />
                 <h5 class="text-gray-900 text-xl leading-tight font-medium mb-2 ml-[30%]">My account</h5>
             </div>
             
