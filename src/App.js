@@ -82,6 +82,7 @@ function App() {
                   <Route  path='/signup' element={<SignUp/>} />
                   <Route  path="/forgot-password" element={<ForgotPasswordCard/>}/>
                   <Route  path='/confirmed-sent-email' element={<EmailSentConfirmation/>}/>
+                  <Route path='/success-register' element={<SuccessRegister/>} />
                 </Route>
                 <Route element={<PrivateRoutes/>}>
                   <Route path='/app' element={<MainDashboardPage/>} >

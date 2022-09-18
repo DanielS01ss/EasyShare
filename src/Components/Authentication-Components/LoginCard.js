@@ -2,6 +2,7 @@ import React, {useState} from "react";
 
 import GoogleLogo from "../../Media/google-icon.jpg";
 import { Link } from "react-router-dom";
+import { isValidEmail } from "../../utils/isValidEmail";
 import { useNavigate } from "react-router-dom";
 
 const LoginCard = ()=>{
@@ -15,10 +16,6 @@ const LoginCard = ()=>{
 		emailValid:false,
 		passwordNotEmpty:false
 	})
-
-	const isValidEmail = (email) => {
-        return /\S+@\S+\.\S+/.test(email);
-    }
 
 
 	const checkValidEmail = (e)=>{
