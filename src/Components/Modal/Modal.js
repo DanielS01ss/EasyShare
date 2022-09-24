@@ -40,13 +40,12 @@ export const Modal = ()=>{
 
     useEffect(()=>{
         fileCheck();
-    },[ selectedFile]);
+    },[selectedFile]);
 
     const changeHandler = (event) =>{
         setSelectedFile(event.target.files[0]);
         setIsFilePicked(true);
     }
-
 
     return(
     <div id="modalEl" tabindex="-1" aria-hidden="true" style={{backdropFilter: "blur(20px)"}} className="mx-auto w-[100%] h-[100%] overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full  ">
