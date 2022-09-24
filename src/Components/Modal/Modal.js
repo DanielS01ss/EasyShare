@@ -3,10 +3,12 @@ import './Modal.css';
 import React ,{useEffect, useState} from "react";
 import { faArrowUp, faCircleInfo, faFile, faX } from "@fortawesome/free-solid-svg-icons";
 
+import ExcelLogo from "../../Media/excel-logo.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import PPTLogo from "../../Media/ppt-logo.png";
 import WordLogo from "../../Media/word-logo.png";
 
-export const Modal = ()=>{
+export const Modal = (props)=>{
 
     const [selectedFile, setSelectedFile] = useState();
     const [isFilePicked, setIsFilePicked] = useState(false);
@@ -14,7 +16,27 @@ export const Modal = ()=>{
     const [isFileValidSize, setIsFileValidSize] = useState(true);
     const [checkedFile, setCheckedFile] = useState(false);
 
+    const [docTypeFile,setDocTypeFile] = useState(false);
+    const [pptxTypeFile, setPptTypeFile] = useState(false);
+    const [excelTypeFile, setExcelTypeFile] = useState(false);
+
     const bytesToMegaBytes = bytes => bytes / (1024 ** 2);
+
+     useEffect(()=>{
+        if(props.fileType && props.fileType === 'docx')
+        {
+            setDocTypeFile(true);
+        }
+        else if(props.fileType && props.fileType === 'ppt')
+        {
+            setPptTypeFile(true);
+
+        } else if(props.fileType && props.fileType === 'excel')
+        {
+            setExcelTypeFile(true);
+        }
+    },[])
+    
 
     const fileCheck = ()=>{
         setCheckedFile(true);
@@ -28,14 +50,39 @@ export const Modal = ()=>{
         else {
             setIsFileValidSize(true);
         }
-        if(selectedFile.name.split('.').pop() !== 'docx')
+        switch(props.fileType)
         {
-            setIsFileValidExtension(false);
-            return;
-        } else {
-            setIsFileValidExtension(true);
+            case 'docx':
+            if(selectedFile.name.split('.').pop() !== 'docx')
+            {
+                setIsFileValidExtension(false);
+                return;
+            } else {
+                setIsFileValidExtension(true);
+            }
+            break;
+           
+            case 'ppt' :
+                if(selectedFile.name.split('.').pop() !== 'ppt' || selectedFile.name.split('.').pop() !== 'pptx')
+                {
+                    setIsFileValidExtension(false);
+                    return;
+                } else {
+                    setIsFileValidExtension(true);
+                }
+                break;
+            
+            case 'excel':
+            if(selectedFile.name.split('.').pop() !== 'xlsx')
+            {
+                setIsFileValidExtension(false);
+                return;
+            } else {
+                setIsFileValidExtension(true);
+            }
+            break;
         }
-
+    
     }
 
     useEffect(()=>{
@@ -55,7 +102,7 @@ export const Modal = ()=>{
     }
 
     const handleUploadFile = ()=>{
-        ///upload file logic
+        props.handleOpenSuccessModal();
 
     }
 
@@ -69,16 +116,22 @@ export const Modal = ()=>{
                     <h3 className="text-xl font-semibold text-gray-900 lg:text-2xl dark:text-white">
                         Upload File
                     </h3>
-                    <button type="button" className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white">
+                    <button type="button" onClick={()=>{props. handleCloseModal()}}  className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white">
                         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>  
                     </button>
                 </div> 
                 <div className="p-6 space-y-6 flex flex-row justify-center">
-                   <img src={WordLogo} width={100}/>
+                 {docTypeFile &&  <img src={WordLogo} width={100}/> }
+                 {pptxTypeFile && <img src={PPTLogo} width={100}/> }
+                 {excelTypeFile && <img src={ExcelLogo} width={100}/>}
                 </div>
                 <div>
-                    <input type="file" name='file' id="file" className='inputFile' onChange={changeHandler} accept='.docx'/>
+                   {docTypeFile && <input type="file" name='file' id="file" className='inputFile' onChange={changeHandler} accept='.docx'/>}
+                   {pptxTypeFile && <input type="file" name='file' id="file" className='inputFile' onChange={changeHandler} accept='.ppt, .pptx'/> }
+                   {excelTypeFile && <input type="file" name='file' id="file" className='inputFile' onChange={changeHandler} accept='.xlsx'/> }
+
                     <label for='file'>Choose file <FontAwesomeIcon icon={faFile}/> </label>
+
                 </div>
              { (isFileValidExtension && isFileValidSize) && selectedFile && <div className='flex flex-row justify-center mt-10 pb-10'>
                     <div className='bg-blue-100 w-9/12 p-2 text-teal-800 border-blue-700 border-2 rounded'>
@@ -91,7 +144,7 @@ export const Modal = ()=>{
                 <div className='flex flex-row justify-center mt-10 pb-10'>
                     <div className='file-upload-error-dialog'>
                     { !isFileValidSize && <p className='text-xl text-red-600'>The file you tried to upload is too big </p>}
-                    { !isFileValidExtension && <p className='text-xl text-red-600'> The file you tried to upload is not a word file </p> }
+                    { !isFileValidExtension && <p className='text-xl text-red-600'> The file you tried to upload is not a {props.fileType === 'docx'? 'word' : props.fileType === 'ppt'? 'powerpoint': 'excel'} file </p> }
                     </div>
                 </div>  
             }

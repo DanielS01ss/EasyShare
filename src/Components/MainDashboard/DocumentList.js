@@ -8,9 +8,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import IconButton from "@mui/material/IconButton";
 import {Link} from "react-router-dom"
 import Loading from "../Loading";
+import {Modal} from "../Modal/Modal.js";
 import PPTLogo from "../../Media/ppt-logo.png";
 import React from "react";
 import SearchIcon from "@mui/icons-material/Search";
+import { SuccessModal } from "../SuccessModal/SuccessModal";
 import TextField from "@mui/material/TextField";
 import WordLogo from "../../Media/word-logo.png";
 
@@ -41,6 +43,10 @@ const DocumentList = () =>{
     const navigate = useNavigate();
     const [searchParams , setSearchParams] = useSearchParams();
     const [documentsType,setDocumentsType] = useState();
+    const [displaySuccessModal,setDisplaySuccessModal] = useState(false);
+    const [displayUploadModal, setDisplayUploadModal] = useState(false);
+    const [fileType,setFileType] = useState('ppt');
+
     useEffect(()=>{
         const currentParams = Object.fromEntries([...searchParams]);
         console.log("useEffect:",currentParams);
@@ -51,12 +57,15 @@ const DocumentList = () =>{
         if(currentParams.type === "powerpoint")
         {
             setDocumentsType("powerpoint");
+            setFileType('ppt');
         } else if (currentParams.type === "word")
         {
             setDocumentsType("word");
+            setFileType('docx');
         } else if (currentParams.type === "excel")
         {
             setDocumentsType("excel");
+            setFileType('excel');
         } else {
             navigate('/not-found');
         }
@@ -85,9 +94,16 @@ const DocumentList = () =>{
         
       }
 
+      const handleUploadDocumentsDisplayModal = ()=>{
+        setDisplayUploadModal(true);
+      }
+
     return(
           
         <div className="pt-40 pb-20 max-w-[1000px] mx-auto  " >
+              {displayUploadModal && <Modal fileType={fileType} handleOpenSuccessModal={()=>{setDisplaySuccessModal(true); setDisplayUploadModal(false);}} handleCloseModal={()=>{setDisplaySuccessModal(false); setDisplayUploadModal(false);}} />}
+                {displaySuccessModal && <SuccessModal handleUploadAnother = {()=>{setDisplaySuccessModal(false); setDisplayUploadModal(true);}} handleCloseModal={()=>{setDisplaySuccessModal(false); setDisplayUploadModal(false);}} />}
+
             <div className="flex flex-row justify-center ">
                 <div className="block p-6 rounded-lg shadow-lg  max-w-4xl" style={{backgroundColor:"rgba(255,255,255,1.0"}}>
                 <Link to="/app/main-page"><FontAwesomeIcon icon={faArrowLeft} className=" float-left pl-4 pb-5 text-3xl"/> </Link>
@@ -98,7 +114,7 @@ const DocumentList = () =>{
                     </div>
                 <div>
                             <Button variant="contained" color="error"> Delete All <FontAwesomeIcon icon={faX} className="pl-2 text-lg"/> </Button>
-                            <Button variant="contained"  style={{backgroundColor: "#A10035",marginLeft:"10px"}}> Upload  <FontAwesomeIcon icon={faUpload} className="pl-2 text-lg"/> </Button>
+                            <Button variant="contained" onClick={()=>{handleUploadDocumentsDisplayModal()}}  style={{backgroundColor: "#A10035",marginLeft:"10px"}}> Upload  <FontAwesomeIcon icon={faUpload} className="pl-2 text-lg"/> </Button>
                 </div>
                     
 
@@ -145,9 +161,6 @@ const DocumentList = () =>{
                             <Button variant="contained"  style={{backgroundColor: "#4200b6",marginLeft:"10px"}}>  <FontAwesomeIcon icon={faDownload} className="text-lg"/> </Button>
                             
                         </div>
-                      
-
-
                     </div>
                 </div>
             </div>     
