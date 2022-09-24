@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {Modal} from "../Modal/Modal.js";
 import PPTLogo from "../../Media/ppt-logo.png";
 import React from "react";
+import { SuccessModal } from "../SuccessModal/SuccessModal";
 import WordLogo from "../../Media/word-logo.png";
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
@@ -17,7 +18,6 @@ const MainDashboardPannel = ()=>{
 
     return(
             <div className="pt-40 max-w-[1000px] mx-auto pb-20">
-                <Modal/>
                 <div className="flex justify-center ">
                     <div className="block p-6 rounded-lg shadow-lg bg-white max-w-4xl">
                     <h5 className="text-gray-900 text-xl leading-tight font-medium mb-2">Welcome UserName</h5>
