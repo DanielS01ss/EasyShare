@@ -23,6 +23,7 @@ import { SuccessModal } from "../SuccessModal/SuccessModal";
 import TextField from "@mui/material/TextField";
 import WordLogo from "../../Media/word-logo.png";
 import { ShareLinkModal } from "../ShareLinkModal/ShareLinkModal";
+import { AreYouSure } from "../AreYouSure/AreYouSure";
 
 const SearchBar = ({ setSearchQuery }) => (
   <form>
@@ -50,6 +51,7 @@ const DocumentList = () => {
   const [displaySuccessModal, setDisplaySuccessModal] = useState(false);
   const [displayUploadModal, setDisplayUploadModal] = useState(false);
   const [fileType, setFileType] = useState("ppt");
+  const [displayAreYouSure, setDisplayAreYouSure] = useState(false);
 
   useEffect(() => {
     const currentParams = Object.fromEntries([...searchParams]);
@@ -106,6 +108,7 @@ const DocumentList = () => {
 
   return (
     <div className="pt-40 pb-20 max-w-[1000px] mx-auto  ">
+      {displayAreYouSure && <AreYouSure />}
       {displayShareModal && (
         <ShareLinkModal
           closeModal={() => {
@@ -158,9 +161,13 @@ const DocumentList = () => {
           <div>
             <Button variant="contained" color="error">
               {" "}
-              Delete All <FontAwesomeIcon
+              Delete All{" "}
+              <FontAwesomeIcon
                 icon={faX}
                 className="pl-2 text-lg"
+                onClick={() => {
+                  setDisplayAreYouSure(true);
+                }}
               />{" "}
             </Button>
             <Button
