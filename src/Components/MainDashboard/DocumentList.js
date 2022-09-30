@@ -22,6 +22,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import { SuccessModal } from "../SuccessModal/SuccessModal";
 import TextField from "@mui/material/TextField";
 import WordLogo from "../../Media/word-logo.png";
+import { ShareLinkModal } from "../ShareLinkModal/ShareLinkModal";
 
 const SearchBar = ({ setSearchQuery }) => (
   <form>
@@ -101,8 +102,17 @@ const DocumentList = () => {
     setDisplayUploadModal(true);
   };
 
+  const [displayShareModal, setDisplayShareModal] = useState(false);
+
   return (
     <div className="pt-40 pb-20 max-w-[1000px] mx-auto  ">
+      {displayShareModal && (
+        <ShareLinkModal
+          closeModal={() => {
+            setDisplayShareModal(false);
+          }}
+        />
+      )}
       {displayUploadModal && (
         <Modal
           fileType={fileType}
@@ -185,7 +195,13 @@ const DocumentList = () => {
                 style={{ backgroundColor: "#a73bdc", marginLeft: "10px" }}
               >
                 {" "}
-                <FontAwesomeIcon icon={faShareNodes} className="text-lg" />{" "}
+                <FontAwesomeIcon
+                  icon={faShareNodes}
+                  onClick={() => {
+                    setDisplayShareModal(true);
+                  }}
+                  className="text-lg"
+                />{" "}
               </Button>
               <Button
                 variant="contained"

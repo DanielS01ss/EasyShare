@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PPTLogo from "../../Media/ppt-logo.png";
 import WordLogo from "../../Media/word-logo.png";
 import ExcelLogo from "../../Media/excel-logo.png";
@@ -13,6 +13,7 @@ import {
   faShareNodes,
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
+import { ShareLinkModal } from "../ShareLinkModal/ShareLinkModal";
 
 const SearchBar = ({ setSearchQuery }) => (
   <form>
@@ -34,8 +35,17 @@ const SearchBar = ({ setSearchQuery }) => (
 );
 
 export const ManageLinks = () => {
+  const [displayShareModal, setDisplayShareModal] = useState(false);
+
   return (
     <div className="pt-40 max-w-[1000px] mx-auto pb-20">
+      {displayShareModal && (
+        <ShareLinkModal
+          closeModal={() => {
+            setDisplayShareModal(false);
+          }}
+        />
+      )}
       <div className="flex justify-center">
         <div className="block p-6 rounded-lg shadow-lg bg-white max-w-4xl">
           <Link to="/app/main-page">
@@ -73,6 +83,9 @@ export const ManageLinks = () => {
               <Button
                 variant="contained"
                 style={{ backgroundColor: "#a73bdc", marginLeft: "10px" }}
+                onClick={() => {
+                  setDisplayShareModal(true);
+                }}
               >
                 <FontAwesomeIcon icon={faShareNodes} className="text-lg" />
               </Button>
