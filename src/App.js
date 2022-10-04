@@ -25,55 +25,9 @@ import { ManageLinks } from "./Components/ManageLinks/ManageLinks";
 function App() {
   const GlobalContext = React.createContext();
 
-  let loggedUser;
-  const [user, setUser] = useState({});
-
-  const handleSignOut = () => {
-    setUser({});
-    document.getElementById("signInWithGoogle").hidden = false;
-  };
-
-  ///aici vei face handlingul la logarea cu google
-  /// vei primi un jwt si vei lua mailul , eventual poza si PENTRU CA SA AI UN ID PE BACKEND
-  // o sa decodezi jwt-ul pe care-l primesti si o sa iei parametrul sub
-  const handleCallbackResponse = (response) => {
-    var userObject = jwt_decode(response.credential);
-    console.log(userObject);
-    setUser(userObject);
-    loggedUser = new User(
-      userObject.familyName + " " + userObject.given_name,
-      userObject.sub,
-      userObject.email
-    );
-    document.getElementById("signInWithGoogle").hidden = true;
-  };
-
-  const contextValues = {
-    user: loggedUser,
-    userData: user,
-    jwt: "",
-    refreshJwt: "",
-  };
-
-  useEffect(() => {
-    /* global google */
-    google.accounts.id.initialize({
-      client_id:
-        "231967582415-gd49ib3e0agjqa7knoo4o5d876bu779e.apps.googleusercontent.com",
-      callback: handleCallbackResponse,
-    });
-
-    google.accounts.id.renderButton(
-      document.getElementById("signInWithGoogle"),
-      { theme: "outline", size: "large" }
-    );
-  }, []);
-
-  //no user sign in   /// have user : show log out buttonbutton
-
   return (
     <div className="App">
-      <GlobalContext.Provider value={contextValues}>
+      <GlobalContext.Provider>
         <BrowserRouter>
           <Routes>
             <Route element={<MainPage />}>
