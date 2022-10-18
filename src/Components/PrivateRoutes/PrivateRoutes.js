@@ -1,13 +1,8 @@
-import {Navigate, Outlet} from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
+import { validateJWTs } from "../../utils/validateJWTs";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-export const PrivateRoutes = ()=>{
-
-    const isAuthenticated = true;
-
-    return(
-        isAuthenticated? <Outlet/> : <Navigate to='/login'/>
-    )
-
+export const PrivateRoutes = () => {
+  return validateJWTs() ? <Outlet /> : <Navigate to="/login" />;
 };
