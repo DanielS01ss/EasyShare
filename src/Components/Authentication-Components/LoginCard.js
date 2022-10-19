@@ -1,17 +1,19 @@
 import "react-toastify/dist/ReactToastify.css";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { ToastContainer, toast } from "react-toastify";
 
 import GoogleLogo from "../../Media/google-icon.jpg";
 import { Link } from "react-router-dom";
 import { isValidEmail } from "../../utils/isValidEmail";
 import { useNavigate } from "react-router-dom";
-import { loginReq } from "../../Requests/authenticationRequests";
+import {
+  loginReq,
+  googleLoginReq,
+} from "../../Requests/authenticationRequests";
 import { AuthErrorMsg } from "../AuthErrorMsg/AuthErrorMsg";
 import { setTokenInLocalStorage } from "../../utils/localStorage";
 import { setRefreshTokenInLocalStorage } from "../../utils/localStorage";
-import { validateJWTs } from "../../utils/validateJWTs";
 
 const LoginCard = () => {
   const notify = () => {
@@ -70,6 +72,28 @@ const LoginCard = () => {
       }
     }
   };
+
+  const divRef = useRef(null);
+
+  useEffect(() => {
+    if (divRef.current) {
+      window.google.accounts.id.initialize({
+        client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID,
+        callback: (res, error) => {
+          if (error) {
+            notify();
+            return;
+          }
+        },
+      });
+      window.google.accounts.id.renderButton(divRef.current, {
+        theme: "filled_blue",
+        size: "medium",
+        type: "standard",
+        text: "continue_with",
+      });
+    }
+  }, [divRef.current]);
 
   return (
     <div class="pt-40 pb-20 flex justify-center items-center h-screen ">
